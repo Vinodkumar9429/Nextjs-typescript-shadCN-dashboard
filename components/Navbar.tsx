@@ -14,12 +14,18 @@ import { SidebarTrigger } from "./ui/sidebar";
 
 const Navbar = () => {
   return (
-    <nav className="sticky top-0 right-0 flex items-center justify-evenly px-4 border-2 py-2 bg-background z-50">
+    <nav className="sticky top-0 right-0 flex items-center justify-center px-4 border-2 py-2 bg-background z-50 gap-x-2">
+      <div className="flex justify-start w-1/3">
       <SidebarTrigger />
-      <div></div>
-      <div></div>
-      <div className="flex justify-between items-center w-1/2 gap-x-2">
-        <Link href={"/"}>DashBoard</Link>
+      </div>
+      {/* <div></div> */}
+      <div className="flex justify-center items-center w-1/3 gap-x-2">
+        <Link href={"/"}
+        className="font-general-sans font-light text-sm md:text-md"
+        >DashBoard</Link>
+      </div>
+
+      <div className="flex justify-end items-center gap-x-3 w-1/3">
         <ModeToggle />
         <DropdownMenu>
           <DropdownMenuTrigger>

@@ -31,7 +31,7 @@ const chartData = [
 
 const AppAreaChart = () => {
   return (
-    <div>
+    <div className="w-full h-full">
       <h1 className="font-general-sans mt-2 font-bold text-sm md:text-lg lg:text-xl text-center">
         Total Visitors
       </h1>
