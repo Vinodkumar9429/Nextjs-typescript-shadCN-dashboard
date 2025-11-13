@@ -15,6 +15,8 @@ import {
 import {
   ChartConfig,
   ChartContainer,
+  ChartLegend,
+  ChartLegendContent,
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
@@ -22,11 +24,11 @@ import {
 export const description = "A donut chart with text"
 
 const chartData = [
-  { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
-  { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
+  { browser: "chrome", visitors: 575, fill: "var(--color-chrome)" },
+  { browser: "safari", visitors: 150, fill: "var(--color-safari)" },
   { browser: "firefox", visitors: 287, fill: "var(--color-firefox)" },
-  { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
-  { browser: "other", visitors: 190, fill: "var(--color-other)" },
+  { browser: "edge", visitors: 140, fill: "var(--color-edge)" },
+  { browser: "other", visitors: 110, fill: "var(--color-other)" },
 ]
 
 const chartConfig = {
@@ -56,31 +58,34 @@ const chartConfig = {
 } satisfies ChartConfig
 
 const AppPieChart = () => {
-  const totalVisitors = React.useMemo(() => {
-    return chartData.reduce((acc, curr) => acc + curr.visitors, 0)
-  }, [])
+  const totalVisitors = chartData.reduce((acc, curr) => acc + curr.visitors, 0)  
 
   return (
-    <Card className="flex flex-col bg-muted">
+    <Card className="flex flex-col bg-transparent">
       <CardHeader className="items-center pb-0">
-        <CardTitle>Pie Chart - Donut with Text</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardTitle>Visitors by Browser</CardTitle>
+        <CardDescription>May - November 2025</CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square max-h-[250px]"
+          className="mx-auto aspect-square max-h-[450px]"
         >
           <PieChart>
             <ChartTooltip
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
+            <ChartLegend
+              className="flex flex-wrap justify-start gap-4 md:gap-6"
+                content={<ChartLegendContent />}
+            />
             <Pie
               data={chartData}
+            //   dataKey={(item)=>Math.floor(item.visitors/2)}
               dataKey="visitors"
               nameKey="browser"
-              innerRadius={60}
+              innerRadius={50}
               strokeWidth={5}
             >
               <Label
