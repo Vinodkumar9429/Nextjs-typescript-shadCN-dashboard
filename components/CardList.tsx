@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Card, CardContent, CardFooter, CardTitle } from "./ui/card";
 import { ThumbsUp } from "lucide-react";
+import { Badge } from "./ui/badge";
 
 
 const popularContent = [
@@ -101,7 +102,7 @@ const CardList = ({title} : {title:titleValue}) => {
       <div className="flex flex-col gap-y-2 mt-2">
         {
           list.map(item =>(
-            <Card key={item.id} className="px-5 flex flex-col justify-center items-start">
+            <Card key={item.id} className="px-5 flex flex-row justify-between items-center bg-card text-card-foreground">
               <div className="w-12 h-12 rounded-full relative overflow-hidden border ml-4">
                 <Image
                 src={item.image}
@@ -111,11 +112,12 @@ const CardList = ({title} : {title:titleValue}) => {
                  />
               </div>
 
-              <CardContent>
-                <CardTitle>{item.title}</CardTitle>
+              <CardContent className="p-0 flex-1">
+                <CardTitle className="text-xs lg:text-sm font-medium">{item.title}</CardTitle>
+                <Badge variant={"default"}>{item.badge}</Badge>
               </CardContent>
-              <CardFooter className="flex  justify-start items-center gap-x-2">
-                <ThumbsUp /> {item.count/1000}k
+              <CardFooter className="flex  justify-start items-center gap-x-2 px-0 lg:px-4 text-sm">
+                <ThumbsUp size={15} /> {item.count/1000}k
               </CardFooter>
               
               

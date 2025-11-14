@@ -27,7 +27,7 @@ const chartData = [
 
 const AppBarChart = () => {
   return (
-    <div className="w-full h-full border flex flex-col justify-center">
+    <div className="w-full h-full flex flex-col justify-center">
         <h1 className="font-general-sans mt-2 font-bold text-lg md:text-2xl lg:text-3xl text-center ">Total Revenue</h1>
     <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
       <BarChart accessibilityLayer data={chartData}>

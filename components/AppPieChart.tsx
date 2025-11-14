@@ -61,7 +61,7 @@ const AppPieChart = () => {
   const totalVisitors = chartData.reduce((acc, curr) => acc + curr.visitors, 0)  
 
   return (
-    <Card className="flex flex-col bg-transparent">
+    <Card className="flex flex-col bg-transparent border-none">
       <CardHeader className="items-center pb-0">
         <CardTitle>Visitors by Browser</CardTitle>
         <CardDescription>May - November 2025</CardDescription>

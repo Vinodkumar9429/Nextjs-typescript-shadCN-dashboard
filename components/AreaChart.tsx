@@ -32,9 +32,7 @@ const chartData = [
 const AppAreaChart = () => {
   return (
     <div className="w-full h-full flex flex-col justify-center items-center">
-      <h1 className="font-general-sans mt-2 font-bold text-sm md:text-lg lg:text-xl text-center">
-        Total Visitors
-      </h1>
+
       <ChartContainer config={chartConfig} className="min-h-56 w-full ">
         <AreaChart accessibilityLayer data={chartData}>
           <CartesianGrid vertical={false} />
