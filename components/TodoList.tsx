@@ -1,6 +1,8 @@
 import { Card } from "./ui/card"
 import { Checkbox } from "./ui/checkbox"
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover"
 import { ScrollArea } from "./ui/scroll-area"
+import { ChevronDown } from "lucide-react"
 
 const todos:string[] = [
     "Create a full screen navigation menu animation using GSAP",
@@ -17,10 +19,18 @@ const todos:string[] = [
 const TodoList = () => {
   return (
     <div >
+        <div className="flex justify-between items-center">
         <h1 className="text-sm text-center font-bold lg:text-xl mb-2">Calender</h1>
+        <Popover>
+            <PopoverTrigger className="flex text-sm justify-between items-center bg-popover px-4 py-2 rounded-3xl">Open <ChevronDown size={20}/> </PopoverTrigger>
+            <PopoverContent>
+                
+            </PopoverContent>
+        </Popover>
+        </div>
 
-        <ScrollArea className="max-h-[400px] overflow-y-auto">
-           
+        <ScrollArea className="max-h-[400px] overflow-y-auto mt-2">
+           <div className="flex flex-col gap-y-2">
            {
             todos.map((todo, id)=>(
 
@@ -35,6 +45,7 @@ const TodoList = () => {
                 
             ))
            }
+           </div>
            
         </ScrollArea>
     </div>
