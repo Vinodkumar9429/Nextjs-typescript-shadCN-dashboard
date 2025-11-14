@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { Card } from "./ui/card";
+import { Card, CardContent, CardFooter, CardTitle } from "./ui/card";
+import { ThumbsUp } from "lucide-react";
 
 
 const popularContent = [
@@ -89,19 +90,19 @@ const latestTransactions = [
 ];
 
 
+type titleValue = "Popular Content" | "Latest Transactions";
 
 
-
-const CardList = ({title} : {title:string}) => {
-  const list = (title === "popularContent") ? popularContent : latestTransactions;
+const CardList = ({title} : {title:titleValue}) => {
+  const list = (title === "Popular Content") ? popularContent : latestTransactions;
   return (
     <div>
-      <h1>{title}</h1>
-      <div className="flex flex-col gap-y-3">
+      <h1 className="text-sm text-center font-bold lg:text-xl">{title}</h1>
+      <div className="flex flex-col gap-y-2 mt-2">
         {
           list.map(item =>(
-            <Card key={item.id}>
-              <div className="w-12 h-12 rounded-full relative overflow-hidden">
+            <Card key={item.id} className="px-5 flex flex-col justify-center items-start">
+              <div className="w-12 h-12 rounded-full relative overflow-hidden border ml-4">
                 <Image
                 src={item.image}
                 alt={item.title}
@@ -110,7 +111,12 @@ const CardList = ({title} : {title:string}) => {
                  />
               </div>
 
-              
+              <CardContent>
+                <CardTitle>{item.title}</CardTitle>
+              </CardContent>
+              <CardFooter className="flex  justify-start items-center gap-x-2">
+                <ThumbsUp /> {item.count/1000}k
+              </CardFooter>
               
               
             </Card>
